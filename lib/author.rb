@@ -1,13 +1,13 @@
 require'pry'
 class Author 
-  attr_accessor :name
-  
+  attr_accessor :name 
   def initialize(name)
-    @name = name 
+    @name = name
+    @posts = []
   end 
   
   def posts
-    Post.all.select {|titles| titles.author == self}
+    Post.all.select {|post| post.author == self}
     #binding.pry
   end 
   
@@ -15,15 +15,15 @@ class Author
     name.author = self
   end 
   
-  def add_song_by_title(name)
-   song = Song.new(name)
-   add_song(song)
+  def add_post_by_title(name)
+   post = Post.new(name)
+   add_post(post)
    #binding.pry
   end 
   
-  def self.song_count
-    self.song.count
-    binding.pry 
+  def self.post_count
+    Post.all.count
+    #binding.pry 
   end 
   
   
